@@ -1,6 +1,6 @@
 "use client";
 
-import {signUpUser} from "@/app/authentication/actions";
+import {signInUser} from "@/app/authentication/actions";
 import {useFormStatus} from "react-dom";
 import {AuthParameters} from "@/app/authentication/types";
 
@@ -10,20 +10,21 @@ const SubmitButton = () => {
 
     return (
         <button type="submit" className="btn btn-primary" aria-disabled={pending}>
-            Sign Up
+            Sign In
         </button>
     );
 }
 
-const SignUpForm = ({params}: { params: AuthParameters}) => {
+const SignInForm = ({params}: { params: AuthParameters}) => {
+    const signInWithParams = signInUser.bind(null, params);
+
     return (
-        <form className="flex flex-col space-y-8" action={signUpUser}>
+        <form className="flex flex-col space-y-8" action={signInWithParams}>
             <input type="email" name="email" placeholder="Email Address"/>
             <input type="password" name="password" placeholder="Password"/>
-            <input type="password" name="confirmedPassword" placeholder="Confirm Password"/>
             <SubmitButton/>
         </form>
     );
 }
 
-export default SignUpForm;
+export default SignInForm;
