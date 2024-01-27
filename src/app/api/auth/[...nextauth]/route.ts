@@ -7,10 +7,12 @@ export const authOptions: AuthOptions = {
             id: "customauth",
             name: "CustomAuth",
             type: "oauth",
-            authorization: "http://localhost:3000/authentication",
-            token: process.env.AUTH_SERVER_URL+"/token/token",
+            issuer: "http://auth-backend-service:80",
+            authorization: process.env.AUTH_FRONTEND_URL + "/authentication",
+            token: process.env.AUTH_SERVER_URL + "/token/token",
+            userinfo: process.env.AUTH_SERVER_URL + "/user/info",
             idToken: true,
-            checks: ["pkce", "state"],
+            jwks_endpoint: process.env.AUTH_SERVER_URL+"/.well-known/jwks.json",
             profile(profile: any) {
                 return {
                     id: profile.sub,
@@ -27,4 +29,4 @@ export const authOptions: AuthOptions = {
 
 export const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST};
+export {handler as GET, handler as POST};
