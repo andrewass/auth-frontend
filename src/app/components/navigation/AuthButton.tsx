@@ -17,13 +17,4 @@ const AuthButton = () => {
     }
 }
 
-
-const NavigationMenu = () => {
-    return (
-        <div>
-            <AuthButton/>
-        </div>
-    );
-}
-
-export default NavigationMenu;
+export default AuthButton;

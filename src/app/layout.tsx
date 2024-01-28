@@ -3,7 +3,7 @@ import './globals.css'
 import React from "react";
 import SessionProvider from "@/app/session/SessionProvider";
 import {getServerSession} from "next-auth";
-import NavigationMenu from "@/app/components/NavigationMenu";
+import NavigationMenu from "@/app/components/navigation/NavigationMenu";
 
 
 export const metadata: Metadata = {
