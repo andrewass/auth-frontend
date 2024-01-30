@@ -3,7 +3,6 @@ import './globals.css'
 import React from "react";
 import SessionProvider from "@/app/session/SessionProvider";
 import {getServerSession} from "next-auth";
-import NavigationMenu from "@/app/components/navigation/NavigationMenu";
 
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default async function RootLayout({children,}: { children: React.ReactNod
         <body>
         <SessionProvider session={session}>
             <main>
-                <NavigationMenu/>
                 {children}
             </main>
         </SessionProvider>

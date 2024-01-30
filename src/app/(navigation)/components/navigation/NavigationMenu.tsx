@@ -1,4 +1,5 @@
-import AuthButton from "@/app/components/navigation/AuthButton";
+import Link from "next/link";
+import AuthButton from "@/app/(navigation)/components/navigation/AuthButton";
 
 
 const NavigationMenu = () => {
@@ -27,8 +28,8 @@ const NavigationMenu = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><a>Placeholder</a></li>
-                    <li><a>Clients</a></li>
-                    <li><a>Profile</a></li>
+                    <li><Link href="/clients"> Clients</Link></li>
+                    <li><Link href="/profile">Profile</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
