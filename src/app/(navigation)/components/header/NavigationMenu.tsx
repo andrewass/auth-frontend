@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AuthButton from "@/app/(navigation)/components/navigation/AuthButton";
+import AuthButton from "@/app/(navigation)/components/header/AuthButton";
 
 
 const NavigationMenu = () => {
