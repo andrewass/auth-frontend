@@ -1,11 +1,13 @@
-import ClientsList from "@/app/(navigation)/clients/ClientsList";
+import ClientRegistration from "@/app/(navigation)/clients/registration/ClientRegistration";
+import ClientsPresentation from "@/app/(navigation)/clients/presentation/ClientsPresentation";
+
 
 const Clients = () => {
 
     return (
-        <div>
-            Clients
-            <ClientsList/>
+        <div className="flex flex-col md:flex-row items-center">
+            <ClientRegistration/>
+            <ClientsPresentation/>
         </div>
     );
 }
