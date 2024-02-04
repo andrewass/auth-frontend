@@ -3,6 +3,7 @@ import './globals.css'
 import React from "react";
 import SessionProvider from "@/app/session/SessionProvider";
 import {getServerSession} from "next-auth";
+import Footer from "@/app/(navigation)/components/footer/Footer";
 
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default async function RootLayout({children,}: { children: React.ReactNod
         <SessionProvider session={session}>
             <main>
                 {children}
+                <Footer/>
             </main>
         </SessionProvider>
         </body>

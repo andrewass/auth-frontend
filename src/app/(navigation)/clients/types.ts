@@ -1,16 +1,38 @@
-export interface Client {
+export interface ClientSimple {
     name: string
     clientId: string
 }
 
+export interface ClientDetailed {
+    name: string
+    clientId: string
+    clientSecret: string | undefined
+    issuedAt: string
+    uri: string
+    redirectUris: string[]
+    email: string
+}
 
-const toClient = (data: any): Client => {
+
+const toSimpleClient = (data: any): ClientSimple => {
     return {
         name: data["client_name"],
         clientId: data["client_id"]
     };
 }
 
-export const toClients = (clients: any) : Client[] => {
-    return clients.map((client: any) => toClient(client))
+export const toDetailedClient = (data: any): ClientDetailed => {
+    return {
+        email: data["user_email"],
+        issuedAt: data["client_id_issued_at"],
+        redirectUris: data["redirect_uri"],
+        uri: data["client_uri"],
+        name: data["client_name"],
+        clientId: data["client_id"],
+        clientSecret: data["client_secret"]
+    };
+}
+
+export const toSimpleClients = (clients: any) : ClientSimple[] => {
+    return clients.map((client: any) => toSimpleClient(client))
 }

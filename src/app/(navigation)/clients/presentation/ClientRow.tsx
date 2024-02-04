@@ -1,8 +1,10 @@
-import {Client} from "@/app/(navigation)/clients/types";
+import {ClientSimple} from "@/app/(navigation)/clients/types";
+import Link from "next/link";
 
-const ClientRow = ({client, key}: {client: Client, key: number}) => {
-    return(
-        <li>{client.name}</li>
+const ClientRow = ({client, clientKey}: { client: ClientSimple, clientKey: string }) => {
+    const path = "/clients/"+client.clientId;
+    return (
+        <li><Link href={path}>{client.name}</Link></li>
     );
 }
 

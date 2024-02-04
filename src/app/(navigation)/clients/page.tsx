@@ -5,7 +5,7 @@ import ClientsPresentation from "@/app/(navigation)/clients/presentation/Clients
 const Clients = () => {
 
     return (
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="grid grid-cols-2">
             <ClientRegistration/>
             <ClientsPresentation/>
         </div>

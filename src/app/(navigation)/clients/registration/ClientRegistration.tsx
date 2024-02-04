@@ -2,7 +2,7 @@ import ClientRegistrationForm from "@/app/(navigation)/clients/registration/Clie
 
 const ClientRegistration = () => {
     return (
-        <div className="basis-1/2 bg-rose-900" >
+        <div className="flex items-center">
             <ClientRegistrationForm/>
         </div>
     );

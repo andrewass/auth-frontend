@@ -15,7 +15,7 @@ const SubmitButton = () => {
 
 const ClientRegistrationForm = () => {
     return (
-        <form className="flex flex-col space-y-8" action={registerClient}>
+        <form className="flex flex-col space-y-8 w-5/12" action={registerClient}>
             <input type="text" name="applicationName" placeholder="Application Name"/>
             <input type="text" name="homepageURL" placeholder="Homepage URL"/>
             <input type="text" name="authCallbackURL" placeholder="Authorization Callback URL"/>

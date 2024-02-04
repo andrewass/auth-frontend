@@ -7,7 +7,6 @@ const NavigationLayout = ({children}: { children: React.ReactNode }) => {
         <section>
             <NavigationMenu/>
             {children}
-            <Footer/>
         </section>
     );
 }
