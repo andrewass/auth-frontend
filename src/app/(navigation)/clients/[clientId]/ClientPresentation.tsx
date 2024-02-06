@@ -1,22 +1,22 @@
-import {ClientDetailed} from "@/app/(navigation)/clients/types";
+import {ClientDetailed, toDetailedClient} from "@/app/(navigation)/clients/types";
+import ClientDescription from "@/app/(navigation)/clients/[clientId]/cards/ClientDescription";
+import Origin from "@/app/(navigation)/clients/[clientId]/cards/Origin";
+import ClientId from "@/app/(navigation)/clients/[clientId]/cards/ClientId";
+import RedirectUri from "@/app/(navigation)/clients/[clientId]/cards/RedirectUri";
+import ClientSecret from "@/app/(navigation)/clients/[clientId]/cards/ClientSecret";
+
+
+
 
 const ClientPresentation = ({client}: { client: ClientDetailed }) => {
     return (
-        <form className="flex flex-col space-y-8 w-5/12">
-            <label>
-                Client Name :
-                <input type="text" name="clientName" placeholder={client.name} readOnly/>
-            </label>
-            <label>
-                Client Id :
-                <input type="text" name="clientId" placeholder={client.clientId} readOnly/>
-            </label>
-            <label>
-                Client URL :
-                <input type="text" name="clientUrl" placeholder={client.uri}/>
-            </label>
-            <button>Update</button>
-        </form>
+        <div className="grid grid-cols-2 gap-4 m-4">
+            <ClientDescription/>
+            <Origin/>
+            <ClientId/>
+            <ClientSecret/>
+            <RedirectUri/>
+        </div>
     );
 }
 
