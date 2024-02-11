@@ -1,19 +1,16 @@
-import {ClientDetailed, toDetailedClient} from "@/app/(navigation)/clients/types";
 import ClientPresentation from "@/app/(navigation)/clients/[clientId]/ClientPresentation";
+import {toDetailedClient} from "@/app/(navigation)/clients/types";
 
-const getClient = async (clientId: string): Promise<ClientDetailed> => {
-    const params = new URLSearchParams({client_id: clientId});
-    const response = await fetch(process.env.AUTH_SERVER_URL + `/clients/client?${params}`);
-    const client = await response.json();
 
-    return toDetailedClient(client);
-}
+export default async function ClientDetails({params}: { params: { clientId: string } }) {
+    const urlParams = new URLSearchParams({client_id: params.clientId});
+    const response = await fetch(process.env.AUTH_SERVER_URL + `/clients/client?${urlParams}`, {
+        cache: "no-store"
+    });
+    const serverClient = await response.json();
+    const client = toDetailedClient(serverClient);
 
-const ClientDetails = async ({params}: { params: { clientId: string } }) => {
-    const client = await getClient(params.clientId);
     return (
         <ClientPresentation client={client}/>
     );
 }
-
-export default ClientDetails;

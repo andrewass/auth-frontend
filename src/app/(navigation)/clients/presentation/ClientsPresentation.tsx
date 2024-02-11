@@ -11,17 +11,15 @@ const getClients = async (): Promise<ClientSimple[]> => {
     return toSimpleClients(clients);
 }
 
-const ClientsPresentation = async () => {
+export default async function ClientsPresentation() {
     const clients = await getClients();
     return (
         <div className="basis-1/2">
             <ul>
                 {clients.map((client) =>
-                    <ClientRow client={client} key={client.clientId} clientKey={client.clientId}/>)
-                }
+                    <ClientRow clientId={client.clientId} clientName={client.name} key={client.clientId}/>
+                )}
             </ul>
         </div>
     );
 }
-
-export default ClientsPresentation;

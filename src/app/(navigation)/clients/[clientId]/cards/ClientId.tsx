@@ -1,8 +1,8 @@
 
-const  ClientId = () => {
+const  ClientId = ({clientId}: {clientId: String}) => {
     return(
         <div className="card">
-            Client ID
+            Client ID : {clientId}
         </div>
     );
 }
