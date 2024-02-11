@@ -7,8 +7,7 @@ export default async function ClientDetails({params}: { params: { clientId: stri
     const response = await fetch(process.env.AUTH_SERVER_URL + `/clients/client?${urlParams}`, {
         cache: "no-store"
     });
-    const serverClient = await response.json();
-    const client = toDetailedClient(serverClient);
+    const client = await toDetailedClient(response);
 
     return (
         <ClientPresentation client={client}/>

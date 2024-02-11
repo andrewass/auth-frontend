@@ -1,6 +1,7 @@
 import {rotateClientSecret} from "@/app/(navigation)/clients/[clientId]/actions";
 import {useState} from "react";
 import hideSecret from "../../../../../../public/hide-secret.svg";
+import {format, parseISO} from "date-fns";
 
 interface Props {
     setClientSecret: (secret: string) => void;
@@ -38,7 +39,7 @@ const ClientSecret = ({setClientSecret, clientSecret, clientId, clientSecretIssu
                     </div>
                     <button className="w-1/4" onClick={rotateSecret}>Rotate</button>
                 </div>
-                <p>Issued At : {clientSecretIssuedAt}</p>
+                <p>Issued At : {format(parseISO(clientSecretIssuedAt), "yyyy-MM-dd HH:mm")}</p>
             </div>
         </div>
     );

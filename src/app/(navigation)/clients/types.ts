@@ -22,7 +22,8 @@ export const toSimpleClient = (data: any): ClientSimple => {
     };
 }
 
-export const toDetailedClient = (data: any): ClientDetailed => {
+export async function toDetailedClient(response: Response): Promise<ClientDetailed>{
+    const data = await response.json();
     return {
         email: data["user_email"],
         redirectUris: data["redirect_uri"],

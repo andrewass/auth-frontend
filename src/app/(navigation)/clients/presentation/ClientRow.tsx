@@ -7,6 +7,8 @@ interface Props {
 
 export default function ClientRow({clientId, clientName}: Props) {
     return (
-        <li><Link href={`/clients/${clientId}`}>{clientName}</Link></li>
+        <div>
+            <Link href={`/clients/${clientId}`}>{clientName}</Link>
+        </div>
     );
 }
