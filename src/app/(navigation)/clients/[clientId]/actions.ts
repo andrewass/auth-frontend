@@ -8,7 +8,5 @@ export const rotateClientSecret = async (clientId: string): Promise<ClientDetail
         cache: "no-store",
         method: "POST"
     });
-    const client = await response.json();
-
-    return toDetailedClient(client);
+    return toDetailedClient(response);
 }

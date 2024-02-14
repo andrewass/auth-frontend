@@ -1,28 +1,30 @@
+"use client";
+
 import {rotateClientSecret} from "@/app/(navigation)/clients/[clientId]/actions";
 import {useState} from "react";
 import hideSecret from "../../../../../../public/hide-secret.svg";
 import {format, parseISO} from "date-fns";
 
 interface Props {
-    setClientSecret: (secret: string) => void;
     clientSecret: string;
     clientSecretIssuedAt: string;
     clientId: string
 }
 
-
-const ClientSecret = ({setClientSecret, clientSecret, clientId, clientSecretIssuedAt}: Props) => {
-
-    const [displaySecret, setDisplaySecret] = useState(false);
+const ClientSecret = ({clientSecret, clientId, clientSecretIssuedAt}: Props) => {
+    const [displaySecret, setDisplaySecret] = useState<boolean>(false);
+    const [secret, setSecret] = useState<string>(clientSecret);
+    const [issuedAt, setIssuedAt] = useState<string>(clientSecretIssuedAt);
 
     const rotateSecret = async () => {
         const client = await rotateClientSecret(clientId);
-        setClientSecret(client.clientSecret);
+        setSecret(client.clientSecret);
+        setIssuedAt(client.clientSecretIssuedAt);
     }
 
     const getSecret = () => {
         if(displaySecret){
-            return clientSecret
+            return secret
         } else {
             return "**************************";
         }
@@ -31,7 +33,7 @@ const ClientSecret = ({setClientSecret, clientSecret, clientId, clientSecretIssu
     return (
         <div className="card">
             <div className="card-body">
-                <h3>Client Secret</h3>
+                <h1>Client Secret</h1>
                 <div className="flex">
                     <div className="flex">
                         <input className="w-1/2" placeholder={getSecret()} disabled/>
@@ -39,7 +41,7 @@ const ClientSecret = ({setClientSecret, clientSecret, clientId, clientSecretIssu
                     </div>
                     <button className="w-1/4" onClick={rotateSecret}>Rotate</button>
                 </div>
-                <p>Issued At : {format(parseISO(clientSecretIssuedAt), "yyyy-MM-dd HH:mm")}</p>
+                <p>Issued At : {format(parseISO(issuedAt), "yyyy-MM-dd HH:mm")}</p>
             </div>
         </div>
     );

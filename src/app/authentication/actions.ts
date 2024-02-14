@@ -1,9 +1,11 @@
 "use server";
 
 import {AuthParameters} from "@/app/authentication/types";
-import { redirect } from "next/navigation";
+import {permanentRedirect, redirect} from "next/navigation";
 
 const fetchAccessCode = async (email: string, params: AuthParameters) => {
+    const internalCallbackUrl = "http://authserver.io/api/auth/callback/customauth";
+
     const authResponse = await fetch(process.env.AUTH_SERVER_URL + "/auth/response", {
             method: "POST",
             body: JSON.stringify({
@@ -18,7 +20,14 @@ const fetchAccessCode = async (email: string, params: AuthParameters) => {
     const data = await authResponse.json();
     const accessCode = data.code;
     const state = data.state;
-    redirect("/api/auth/callback/customauth?code="+accessCode+"&state="+state)
+    if (internalCallbackUrl.includes(params.redirectUri!!)) {
+        redirect("/api/auth/callback/customauth?code=" + accessCode + "&state=" + state);
+    } else {
+        const redirectUrl = new URL(params.redirectUri!!);
+        redirectUrl.searchParams.append("code", accessCode);
+        redirectUrl.searchParams.append("state", state);
+        permanentRedirect(redirectUrl.href);
+    }
 }
 
 
