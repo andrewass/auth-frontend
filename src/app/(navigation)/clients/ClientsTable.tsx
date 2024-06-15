@@ -1,5 +1,5 @@
 import {getServerSessionData} from "@/app/session/sessionData";
-import ClientRow from "@/app/(navigation)/clients/presentation/ClientRow";
+import ClientRow from "@/app/(navigation)/clients/ClientRow";
 import {ClientSimple, toSimpleClients} from "@/app/(navigation)/clients/types";
 
 const getClients = async (): Promise<ClientSimple[]> => {
@@ -13,17 +13,20 @@ const getClients = async (): Promise<ClientSimple[]> => {
     return toSimpleClients(clients);
 }
 
-export default async function ClientsPresentation() {
+export default async function ClientsTable() {
     const clients = await getClients();
+
     return (
-        <div className="basis-1/2">
-            <ul>
-                {clients.map((client) => (
-                    <li key={client.clientId}>
-                        <ClientRow clientId={client.clientId} clientName={client.name} key={client.clientId}/>
-                    </li>
-                ))}
-            </ul>
+        <div>
+            <div className="basis-1/2">
+                <ul>
+                    {clients.map((client) => (
+                        <li key={client.clientId}>
+                            <ClientRow clientId={client.clientId} clientName={client.name} key={client.clientId}/>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }

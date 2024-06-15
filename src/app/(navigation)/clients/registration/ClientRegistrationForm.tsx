@@ -16,10 +16,13 @@ const SubmitButton = () => {
 const ClientRegistrationForm = () => {
     return (
         <form className="flex flex-col space-y-8 w-5/12" action={registerClient}>
-            <input type="text" name="applicationName" placeholder="Application Name"/>
-            <input type="text" name="homepageURL" placeholder="Homepage URL"/>
-            <input type="text" name="authCallbackURL" placeholder="Authorization Callback URL"/>
-            <input type="text" name="description" placeholder="Description"/>
+            <select className="select select-bordered">
+                <option>Native</option>
+                <option>Single-page App</option>
+            </select>
+            <input type="text" name="applicationName" placeholder="Application Name" className="input input-bordered"/>
+            <input type="text" name="homepageURL" placeholder="Homepage URL" className="input input-bordered"/>
+            <textarea className="textarea textarea-bordered" placeholder="Description"></textarea>
             <SubmitButton/>
         </form>
     );
