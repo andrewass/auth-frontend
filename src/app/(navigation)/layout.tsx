@@ -8,7 +8,7 @@ const NavigationLayout = ({children}: { children: React.ReactNode }) => {
             <div className="flex-none">
                 <NavigationMenu/>
             </div>
-            <div className="flex-1 pt-10 pl-48">
+            <div className="flex-1">
                 {children}
             </div>
             <div className="flex-none">
