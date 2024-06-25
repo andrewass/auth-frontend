@@ -1,5 +1,8 @@
 
 const ClientRegistrationStep1 = () => {
+
+    console.log("Render registration step 1")
+
     return (
         <div className="flex flex-col space-y-8 w-5/12">
             <select className="select select-bordered">

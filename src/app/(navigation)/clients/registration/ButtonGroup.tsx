@@ -1,20 +1,20 @@
-interface Props {
-    navigateNext: () => void;
-    cancelRegistration: () => void;
-    isFinalStep: boolean;
-}
+import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 
-const ButtonGroup = ({isFinalStep, cancelRegistration, navigateNext}: Props) => {
+const ButtonGroup = () => {
+    const {isFinalStep, navigateNext, currentStep, navigatePrevious} = useClientDataContext();
+
     return (
         <div className="flex gap-10">
-            <button className="btn btn-primary" onClick={cancelRegistration}>
-                Cancel
-            </button>
+            {currentStep > 0 &&
+                <button className="btn btn-primary" onClick={navigatePrevious}>
+                    Previous
+                </button>
+            }
             <button className="btn btn-primary" onClick={navigateNext}>
                 {isFinalStep ? "Submit" : "Next"}
             </button>
         </div>
-    )
+    );
 }
 
 export default ButtonGroup;

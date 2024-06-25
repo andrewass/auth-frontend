@@ -1,5 +1,6 @@
 import LeftMenu from "@/app/(navigation)/clients/registration/LeftMenu";
 import RightMenu from "@/app/(navigation)/clients/registration/RightMenu";
+import {ClientDataProvider} from "@/app/(navigation)/clients/registration/ClientDataContext";
 
 
 export default function ClientRegistration() {
@@ -10,7 +11,9 @@ export default function ClientRegistration() {
                 <LeftMenu/>
             </div>
             <div className="flex-1">
-                <RightMenu/>
+                <ClientDataProvider>
+                    <RightMenu/>
+                </ClientDataProvider>
             </div>
         </div>
     );
