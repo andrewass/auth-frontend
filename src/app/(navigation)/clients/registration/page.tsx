@@ -1,21 +1,13 @@
-import LeftMenu from "@/app/(navigation)/clients/registration/LeftMenu";
-import RightMenu from "@/app/(navigation)/clients/registration/RightMenu";
 import {ClientDataProvider} from "@/app/(navigation)/clients/registration/ClientDataContext";
+import ClientRegistration from "@/app/(navigation)/clients/registration/ClientRegistration";
 
 
-export default function ClientRegistration() {
+export default function ClientRegistrationPage() {
 
     return (
-        <div className="flex">
-            <div className="flex-none">
-                <LeftMenu/>
-            </div>
-            <div className="flex-1">
-                <ClientDataProvider>
-                    <RightMenu/>
-                </ClientDataProvider>
-            </div>
-        </div>
+        <ClientDataProvider>
+            <ClientRegistration/>
+        </ClientDataProvider>
     );
 
 }

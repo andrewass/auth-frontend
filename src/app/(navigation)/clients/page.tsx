@@ -15,18 +15,18 @@ async function getClients(): Promise<ClientSimple[]> {
 }
 
 export default async function Clients() {
-    const clients = await getClients();
+    const clients: ClientSimple[] = await getClients();
 
     return (
-        <div className="grid">
-            <p>Clients : </p>
-            {clients.length > 0
-                ? <ClientsTable/>
-                : <p>-- No clients registered --</p>
-            }
-            <Link href={"/clients/registration"} passHref>
-                <button className="btn">Add Client</button>
-            </Link>
+        <div className="flex flex-col gap-12">
+            <div>
+                <ClientsTable clients={clients}/>
+            </div>
+            <div>
+                <Link href={"/clients/registration"} passHref>
+                    <button className="btn">Add Client</button>
+                </Link>
+            </div>
         </div>
     );
 }

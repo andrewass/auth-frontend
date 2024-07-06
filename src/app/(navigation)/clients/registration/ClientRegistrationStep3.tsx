@@ -1,8 +1,7 @@
-
 const ClientRegistrationStep3 = () => {
 
-    return(
-        <p>Client Reg step 3</p>
+    return (
+        <p>Overview of Client Registration</p>
     );
 
 }

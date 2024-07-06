@@ -4,15 +4,19 @@ const ButtonGroup = () => {
     const {isFinalStep, navigateNext, currentStep, navigatePrevious} = useClientDataContext();
 
     return (
-        <div className="flex gap-10">
+        <div className="flex justify-between">
             {currentStep > 0 &&
-                <button className="btn btn-primary" onClick={navigatePrevious}>
-                    Previous
-                </button>
+                <div>
+                    <button className="btn btn-primary" onClick={navigatePrevious}>
+                        Previous
+                    </button>
+                </div>
             }
-            <button className="btn btn-primary" onClick={navigateNext}>
-                {isFinalStep ? "Submit" : "Next"}
-            </button>
+            <div className="ml-auto">
+                <button className="btn btn-primary" onClick={navigateNext}>
+                    {isFinalStep ? "Submit" : "Next"}
+                </button>
+            </div>
         </div>
     );
 }

@@ -1,8 +1,7 @@
-import Link from "next/link";
 import AuthButton from "@/app/(navigation)/components/header/AuthButton";
 
 
-const NavigationMenu = () => {
+const HeaderMenu = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -25,13 +24,6 @@ const NavigationMenu = () => {
                 <a className="btn btn-ghost text-xl">Custom Auth Server</a>
             </div>
 
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Placeholder</a></li>
-                    <li><Link href="/clients"> Clients</Link></li>
-                    <li><Link href="/profile">Profile</Link></li>
-                </ul>
-            </div>
             <div className="navbar-end">
                 <a className="btn">{<AuthButton/>}</a>
             </div>
@@ -39,4 +31,4 @@ const NavigationMenu = () => {
     );
 }
 
-export default NavigationMenu;
+export default HeaderMenu;

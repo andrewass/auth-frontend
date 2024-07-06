@@ -7,7 +7,7 @@ import {useClientDataContext} from "@/app/(navigation)/clients/registration/Clie
 import ClientRegistrationStep2 from "@/app/(navigation)/clients/registration/ClientRegistrationStep2";
 import ClientRegistrationStep3 from "@/app/(navigation)/clients/registration/ClientRegistrationStep3";
 
-const RightMenu = () => {
+const ClientRegistration = () => {
     const {currentStep} = useClientDataContext();
 
     const steps = [
@@ -16,15 +16,19 @@ const RightMenu = () => {
         <ClientRegistrationStep3 key={3}/>
     ];
 
-    console.log("Render and current step is " + currentStep);
-
     return (
-        <div className="flex flex-col gap-14">
-            <ClientRegistrationStepDisplay/>
-            {steps[currentStep]}
-            <ButtonGroup/>
+        <div className="flex flex-col gap-14 w-2/3">
+            <div className="w-full">
+                <ClientRegistrationStepDisplay/>
+            </div>
+            <div className="w-2/3 h-2/5 mx-auto">
+                {steps[currentStep]}
+            </div>
+            <div className="w-2/3 mx-auto">
+                <ButtonGroup/>
+            </div>
         </div>
     );
 }
 
-export default RightMenu;
+export default ClientRegistration;

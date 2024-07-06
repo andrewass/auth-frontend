@@ -1,11 +1,11 @@
 
-interface Step1FormData{
-    clientName: string
-    clientDescription: string
-    clientUrl: string
+export interface Step1FormData{
+    clientName: string | undefined
+    clientDescription: string | undefined
+    clientUrl: string | undefined
 }
 
-interface Step2FormData{
+export interface Step2FormData{
     redirectUris: string[]
     tokenEndpointAuthMethod: string
 }
