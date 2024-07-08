@@ -2,18 +2,32 @@ import {useClientDataContext} from "@/app/(navigation)/clients/registration/Clie
 import {ChangeEvent} from "react";
 
 enum Field {
+    TYPE,
     NAME,
     URL,
     DESCRIPTION
 }
 
-const ClientRegistrationStep1 = () => {
+const applicationTypes = {
+    WEB: "Web Application",
+    SPA: "Single Page Application",
+    NATIVE: "Native Application",
+    M2M: "Machine to Machine Application"
+}
+
+export default function ClientRegistrationStep1() {
     const {step1FormData, updateStep1FormData} = useClientDataContext();
 
     function updateForm(
         field: Field,
-        event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) {
+        event: ChangeEvent<HTMLInputElement>
+            | ChangeEvent<HTMLTextAreaElement>
+            | ChangeEvent<HTMLSelectElement>
+    ) {
         switch (field) {
+            case Field.TYPE:
+                updateStep1FormData({...step1FormData, clientType: event.target.value});
+                break;
             case Field.NAME :
                 updateStep1FormData({...step1FormData, clientName: event.target.value});
                 break;
@@ -28,9 +42,15 @@ const ClientRegistrationStep1 = () => {
 
     return (
         <div className="flex flex-col gap-8">
-            <select className="select select-bordered">
-                <option>Native</option>
-                <option>Single-page App</option>
+            <select className="select select-bordered" value={step1FormData.clientType ?? "default"}
+                    onChange={(event) => updateForm(Field.TYPE, event)}
+            >
+                <option value="default" disabled>
+                    Select Application Type
+                </option>
+                {Object.entries(applicationTypes)
+                    .map(([key, value]) => <option key={key} value={value}>{value}</option>)
+                }
             </select>
             <input type="text" name="applicationName" value={step1FormData?.clientName || ""}
                    onChange={(event) => updateForm(Field.NAME, event)}
@@ -44,5 +64,3 @@ const ClientRegistrationStep1 = () => {
         </div>
     );
 }
-
-export default ClientRegistrationStep1;

@@ -3,16 +3,19 @@
 import {getServerSessionData} from "@/app/session/sessionData";
 import {toSimpleClient} from "@/app/(navigation)/clients/types";
 import {redirect} from "next/navigation";
+import {Step1FormData} from "@/app/(navigation)/clients/registration/ClientFormData";
 
-export const registerClient = async (formData: FormData) => {
+export async function registerClient(
+    step1FormData: Step1FormData
+){
     const sessionData = await getServerSessionData();
     const response = await fetch(process.env.AUTH_SERVER_URL + "/clients/create", {
             method: "POST",
             body: JSON.stringify({
-                redirect_uris: Array(1).fill(formData.get("authCallbackURL")),
-                client_uri: formData.get("homepageURL"),
-                client_name: formData.get("applicationName"),
-                client_description: formData.get("description"),
+                redirect_uris: Array.of(""),
+                client_uri: step1FormData.clientUrl,
+                client_name: step1FormData.clientName,
+                client_description: step1FormData.clientDescription,
                 user_email: sessionData.email
             })
         }

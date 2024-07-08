@@ -1,11 +1,11 @@
 "use client";
 
-import ClientRegistrationStep1 from "@/app/(navigation)/clients/registration/ClientRegistrationStep1";
 import ClientRegistrationStepDisplay from "@/app/(navigation)/clients/registration/ClientRegistrationStepDisplay";
 import ButtonGroup from "@/app/(navigation)/clients/registration/ButtonGroup";
 import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 import ClientRegistrationStep2 from "@/app/(navigation)/clients/registration/ClientRegistrationStep2";
 import ClientRegistrationStep3 from "@/app/(navigation)/clients/registration/ClientRegistrationStep3";
+import ClientRegistrationStep1 from "@/app/(navigation)/clients/registration/ClientRegistrationStep1";
 
 const ClientRegistration = () => {
     const {currentStep} = useClientDataContext();
