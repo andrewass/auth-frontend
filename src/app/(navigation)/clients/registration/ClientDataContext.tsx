@@ -39,8 +39,8 @@ export function ClientDataProvider({children}: Props) {
     }
 
     function navigatePrevious() {
-        setCurrentStep(currentStep - 1)
-        setIsFinalStep(false)
+        setCurrentStep(currentStep - 1);
+        setIsFinalStep(false);
     }
 
     function updateStep1FormData(updatedForm: Step1FormData) {
@@ -48,7 +48,7 @@ export function ClientDataProvider({children}: Props) {
     }
 
     function updateStep2FormData(updatedForm: Step2FormData) {
-        setStep2FormData(updatedForm)
+        setStep2FormData(updatedForm);
     }
 
     function submitClientRegistration() {

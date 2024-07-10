@@ -1,5 +1,6 @@
 import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 import {ChangeEvent} from "react";
+import MultiValueInput from "@/app/components/MultiValueInput";
 
 enum Field {
     AUTH_METHOD
@@ -16,7 +17,7 @@ const authMethods = {
 const ClientRegistrationStep2 = () => {
     const {step2FormData, updateStep2FormData} = useClientDataContext();
 
-    function updateForm(
+    function updateFormOnEvent(
         field: Field,
         event: ChangeEvent<HTMLSelectElement>
     ) {
@@ -27,10 +28,14 @@ const ClientRegistrationStep2 = () => {
         }
     }
 
+    function updateRedirectUris(uriList: string[]) {
+        updateStep2FormData({...step2FormData, redirectUris: uriList});
+    }
+
     return (
         <div className="flex flex-col gap-8">
             <select className="select select-bordered" value={step2FormData.tokenEndpointAuthMethod ?? "default"}
-                    onChange={(event) => updateForm(Field.AUTH_METHOD, event)}
+                    onChange={(event) => updateFormOnEvent(Field.AUTH_METHOD, event)}
             >
                 <option value="default" disabled>
                     Select Token Endpoint Auth Method
@@ -39,6 +44,11 @@ const ClientRegistrationStep2 = () => {
                     .map(([key, value]) => <option key={key} value={value}>{value}</option>)
                 }
             </select>
+            <MultiValueInput
+                placeholderValue={"Add Commma Separated Redirect URLs"}
+                items={step2FormData.redirectUris}
+                updateRedirectUris={updateRedirectUris}
+            />
         </div>
     );
 }

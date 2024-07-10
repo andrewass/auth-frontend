@@ -52,10 +52,10 @@ export default function ClientRegistrationStep1() {
                     .map(([key, value]) => <option key={key} value={value}>{value}</option>)
                 }
             </select>
-            <input type="text" name="applicationName" value={step1FormData?.clientName || ""}
+            <input type="text" value={step1FormData?.clientName || ""}
                    onChange={(event) => updateForm(Field.NAME, event)}
                    placeholder="Application Name" className="input input-bordered"/>
-            <input type="text" name="homepageURL" value={step1FormData?.clientUrl || ""}
+            <input type="text" value={step1FormData?.clientUrl || ""}
                    onChange={(event) => updateForm(Field.URL, event)}
                    placeholder="Homepage URL" className="input input-bordered"/>
             <textarea className="textarea textarea-bordered" value={step1FormData?.clientDescription || ""}
