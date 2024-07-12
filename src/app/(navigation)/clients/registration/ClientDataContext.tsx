@@ -3,6 +3,8 @@
 import {createContext, ReactNode, useContext, useState} from "react";
 import {Step1FormData, Step2FormData} from "@/app/(navigation)/clients/registration/ClientFormData";
 import {registerClient} from "@/app/(navigation)/clients/registration/actions";
+import {grantTypes} from "@/app/(navigation)/clients/registration/ClientRegistrationStep2";
+import {CheckboxItem} from "@/app/components/CheckboxGroup";
 
 interface ClientDataContextType {
     currentStep: number
@@ -21,6 +23,16 @@ interface Props {
 
 const ClientDataContext = createContext<ClientDataContextType | undefined>(undefined);
 
+function createGrantTypeCheckboxes(): CheckboxItem[] {
+    return Object.entries(grantTypes).map(([key, value]) => (
+        {
+            code: key,
+            decode: value,
+            checked: false
+        }
+    ));
+}
+
 export function ClientDataProvider({children}: Props) {
     const [currentStep, setCurrentStep] = useState<number>(0);
     const [isFinalStep, setIsFinalStep] = useState<boolean>(false);
@@ -28,7 +40,11 @@ export function ClientDataProvider({children}: Props) {
         {clientDescription: undefined, clientName: undefined, clientUrl: undefined, clientType: undefined}
     );
     const [step2FormData, setStep2FormData] = useState<Step2FormData>(
-        {tokenEndpointAuthMethod: undefined, redirectUris: []}
+        {
+            tokenEndpointAuthMethod: undefined,
+            redirectUris: [],
+            grantTypes: createGrantTypeCheckboxes()
+        }
     );
 
     function navigateNext() {
