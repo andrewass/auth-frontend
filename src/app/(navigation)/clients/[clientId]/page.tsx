@@ -1,9 +1,14 @@
 import ClientPresentation from "@/app/(navigation)/clients/[clientId]/ClientPresentation";
 import {toDetailedClient} from "@/app/(navigation)/clients/types";
+import {Suspense} from "react";
 
 
-export default async function ClientDetails({params}: { params: { clientId: string } }) {
-    const urlParams = new URLSearchParams({client_id: params.clientId});
+interface Props {
+    clientId: string
+}
+
+async function ClientDetails({clientId}: Props) {
+    const urlParams = new URLSearchParams({client_id: clientId});
     const response = await fetch(process.env.AUTH_SERVER_URL + `/clients/client?${urlParams}`, {
         cache: "no-store"
     });
@@ -12,4 +17,18 @@ export default async function ClientDetails({params}: { params: { clientId: stri
     return (
         <ClientPresentation client={client}/>
     );
+}
+
+
+export default function ClientDetailsPage({params}: { params: { clientId: string } }) {
+    const {clientId} = params;
+
+    return (
+        <div>
+            <Suspense fallback={<p>Loading...</p>}>
+                <ClientDetails clientId={clientId}/>
+            </Suspense>
+        </div>
+    );
+
 }

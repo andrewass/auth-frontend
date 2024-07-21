@@ -1,6 +1,7 @@
 export interface ClientSimple {
     name: string
     clientId: string
+    clientSecret: string
 }
 
 export interface ClientDetailed {
@@ -18,7 +19,8 @@ export interface ClientDetailed {
 export const toSimpleClient = (data: any): ClientSimple => {
     return {
         name: data["client_name"],
-        clientId: data["client_id"]
+        clientId: data["client_id"],
+        clientSecret: data["client_secret"]
     };
 }
 

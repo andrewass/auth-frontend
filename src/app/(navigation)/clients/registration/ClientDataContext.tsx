@@ -15,6 +15,7 @@ interface ClientDataContextType {
     updateStep1FormData: (updatedForm: Step1FormData) => void
     step2FormData: Step2FormData
     updateStep2FormData: (updatedForm: Step2FormData) => void
+    submitClientFormData: () => void
 }
 
 interface Props {
@@ -67,8 +68,8 @@ export function ClientDataProvider({children}: Props) {
         setStep2FormData(updatedForm);
     }
 
-    function submitClientRegistration() {
-        registerClient(step1FormData)
+    function submitClientFormData() {
+        registerClient(step1FormData, step2FormData)
             .catch(error => console.log(error))
     }
 
@@ -77,7 +78,8 @@ export function ClientDataProvider({children}: Props) {
             step1FormData, updateStep1FormData,
             step2FormData, updateStep2FormData,
             currentStep, isFinalStep,
-            navigateNext, navigatePrevious
+            navigateNext, navigatePrevious,
+            submitClientFormData
         }}>
             {children}
         </ClientDataContext.Provider>

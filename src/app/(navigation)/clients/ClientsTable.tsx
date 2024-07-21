@@ -1,17 +1,34 @@
-import ClientRow from "@/app/(navigation)/clients/ClientRow";
 import {ClientSimple} from "@/app/(navigation)/clients/types";
+import Link from "next/link";
 
 interface Props {
     clients: ClientSimple[]
 }
 
-const clientTable = (clients: ClientSimple[]) => {
+
+function ClientTable({clients}: Props) {
     return (
-        clients.map((client) => (
-            <li key={client.clientId}>
-                <ClientRow clientId={client.clientId} clientName={client.name} key={client.clientId}/>
-            </li>
-        )))
+        <table className="table">
+            <thead>
+            <tr>
+                <th>Client Name</th>
+                <th>Client Id</th>
+                <th>Client Secret</th>
+            </tr>
+            </thead>
+            <tbody>
+            {clients.map((client, index) =>
+                <tr key={client.clientId}>
+                    <td>
+                        <Link href={`/clients/${client.clientId}`}>{client.name}</Link>
+                    </td>
+                    <td>{client.clientId}</td>
+                    <td>{client.clientSecret}</td>
+                </tr>
+            )}
+            </tbody>
+        </table>
+    )
 }
 
 export default async function ClientsTable({clients}: Props) {
@@ -20,7 +37,7 @@ export default async function ClientsTable({clients}: Props) {
             <h3>Clients : </h3>
             {clients.length === 0
                 ? <p>No clients registered</p>
-                : clientTable(clients)
+                : <ClientTable clients={clients}/>
             }
         </div>
     );

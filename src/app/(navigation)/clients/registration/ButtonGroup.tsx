@@ -1,7 +1,10 @@
 import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 
 const ButtonGroup = () => {
-    const {isFinalStep, navigateNext, currentStep, navigatePrevious} = useClientDataContext();
+    const {
+        isFinalStep, navigateNext, currentStep,
+        navigatePrevious, submitClientFormData
+    } = useClientDataContext();
 
     return (
         <div className="flex justify-between">
@@ -13,7 +16,9 @@ const ButtonGroup = () => {
                 </div>
             }
             <div className="ml-auto">
-                <button className="btn btn-primary" onClick={navigateNext}>
+                <button className="btn btn-primary"
+                        onClick={isFinalStep ? submitClientFormData : navigateNext}
+                >
                     {isFinalStep ? "Submit" : "Next"}
                 </button>
             </div>
