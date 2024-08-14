@@ -1,4 +1,4 @@
-import ClientsTable from "@/app/(navigation)/clients/ClientsTable";
+import ClientsTable from "@/app/(navigation)/clients/table/ClientsTable";
 import {toSimpleClients} from "@/app/(navigation)/clients/types";
 import {getServerSessionData} from "@/app/session/sessionData";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import {Suspense} from "react";
 async function Clients() {
     const sessionData = await getServerSessionData();
     const params = new URLSearchParams({email: sessionData.email});
-    const response = await fetch(process.env.AUTH_SERVER_URL + `/clients/all?${params}`, {
+    const response = await fetch(process.env.AUTH_SERVER_URL + `/clients?${params}`, {
         cache: "no-store"
     });
     const clients = await response.json();

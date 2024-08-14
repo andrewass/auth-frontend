@@ -26,5 +26,5 @@ export async function registerClient(
     );
     const responseBody = await response.json();
     const client = toSimpleClient(responseBody);
-    redirect(`clients/${client.clientId}`);
+    redirect(`${client.clientId}`);
 }
