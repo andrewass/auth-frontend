@@ -1,11 +1,11 @@
 
-
-const ClientDescription = () => {
+export default function ClientDescription(){
     return(
         <div className="card">
-            Client Description
+            <div className="card-body">
+                <h2 className="card-title">Client Description</h2>
+                <p>Hello</p>
+            </div>
         </div>
     );
 }
-
-export default ClientDescription;

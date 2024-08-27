@@ -6,13 +6,13 @@ interface Props {
     originList: string[]
 }
 
-const Origins = ({originList}: Props) => {
+export default function ClientOrigins({originList}: Props) {
     const [origins, setOrigins] = useState<string[]>(originList);
 
     return (
         <div className="card">
             <div className="card-body">
-                <h1>Authorized Origins</h1>
+                <h2 className="card-title">Authorized Origins</h2>
                 <ul>
                     {origins.map((origin, index) => (
                         <li key={index}>
@@ -24,5 +24,3 @@ const Origins = ({originList}: Props) => {
         </div>
     );
 }
-
-export default Origins;

@@ -2,9 +2,8 @@ import ClientsTable from "@/app/(navigation)/clients/table/ClientsTable";
 import {toSimpleClients} from "@/app/(navigation)/clients/types";
 import {getServerSessionData} from "@/app/session/sessionData";
 import Link from "next/link";
-import {Suspense} from "react";
 
-async function Clients() {
+export default async function ClientsPage() {
     const sessionData = await getServerSessionData();
     const params = new URLSearchParams({email: sessionData.email});
     const response = await fetch(process.env.AUTH_SERVER_URL + `/clients?${params}`, {
@@ -23,16 +22,6 @@ async function Clients() {
                     <button className="btn">Add Client</button>
                 </Link>
             </div>
-        </div>
-    );
-}
-
-export default async function ClientsPage() {
-    return (
-        <div>
-            <Suspense fallback={<p>Loading...</p>}>
-                <Clients/>
-            </Suspense>
         </div>
     );
 }

@@ -13,7 +13,7 @@ const NavigationLayout = ({children}: { children: React.ReactNode }) => {
                 <div className="flex-none">
                     <LeftMenu/>
                 </div>
-                <div className="flex-1 flex mt-24 ml-52">
+                <div className="flex-1 flex justify-center mt-24">
                     {children}
                 </div>
             </div>

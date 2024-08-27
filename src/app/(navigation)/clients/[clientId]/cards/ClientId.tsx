@@ -1,10 +1,11 @@
 
-const  ClientId = ({clientId}: {clientId: String}) => {
-    return(
+export default function ClientId({clientId}: { clientId: String }) {
+    return (
         <div className="card">
-            Client ID : {clientId}
+            <div className="card-body">
+                <h2 className="card-title">Client ID</h2>
+                <p>{clientId}</p>
+            </div>
         </div>
     );
 }
-
-export default ClientId;

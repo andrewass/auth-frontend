@@ -12,7 +12,7 @@ interface RowProps {
 
 export default function ClientRow({client}: RowProps) {
     const [hideSecret, setHideSecret] = useState<boolean>(true);
-    const hiddenSecret = "*".repeat(25);
+    const hiddenSecret = "*".repeat(35);
 
     return (
         <tr key={client.clientId}>
