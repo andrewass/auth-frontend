@@ -1,7 +1,7 @@
 import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 
 
-const ClientRegistrationStepDisplay = () => {
+const ClientFormStepDisplay = () => {
     const {currentStep} = useClientDataContext();
 
     return (
@@ -13,4 +13,4 @@ const ClientRegistrationStepDisplay = () => {
     );
 }
 
-export default ClientRegistrationStepDisplay;
+export default ClientFormStepDisplay;

@@ -1,5 +1,6 @@
 import ClientPresentation from "@/app/(navigation)/clients/[clientId]/ClientPresentation";
 import {toDetailedClient} from "@/app/(navigation)/clients/types";
+import Link from "next/link";
 
 
 export default async function ClientDetailsPage({params}: { params: { clientId: string } }) {
@@ -11,6 +12,11 @@ export default async function ClientDetailsPage({params}: { params: { clientId: 
     const client = await toDetailedClient(response);
 
     return (
-        <ClientPresentation client={client}/>
+        <div>
+            <ClientPresentation client={client}/>
+            <Link href={"/clients/modification"} passHref>
+                <button className="btn">Edit</button>
+            </Link>
+        </div>
     );
 }

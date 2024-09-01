@@ -2,7 +2,7 @@
 
 import {rotateClientSecret} from "@/app/(navigation)/clients/[clientId]/actions";
 import {useState} from "react";
-import hideSecret from "../../../../../../public/hide-secret.svg";
+import Image from "next/image";
 
 interface Props {
     clientSecret: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ClientSecret = ({clientSecret, clientId, clientSecretIssuedAt}: Props) => {
-    const [displaySecret, setDisplaySecret] = useState<boolean>(false);
+    const [hideSecret, setHideSecret] = useState<boolean>(true);
     const [secret, setSecret] = useState<string>(clientSecret);
     const [issuedAt, setIssuedAt] = useState<string>(clientSecretIssuedAt);
 
@@ -22,10 +22,10 @@ const ClientSecret = ({clientSecret, clientId, clientSecretIssuedAt}: Props) => 
     }
 
     const getSecret = () => {
-        if(displaySecret){
-            return secret
+        if (hideSecret) {
+            return "****************************************";
         } else {
-            return "**************************";
+            return secret
         }
     }
 
@@ -33,14 +33,20 @@ const ClientSecret = ({clientSecret, clientId, clientSecretIssuedAt}: Props) => 
         <div className="card">
             <div className="card-body">
                 <h2 className="card-title">Client Secret</h2>
-                <div className="flex">
-                    <div className="flex">
-                        <input className="w-1/2" placeholder={getSecret()} disabled/>
-                        <img className="m-3" src={hideSecret} onClick={() => setDisplaySecret(!displaySecret)}/>
+                <div className="flex flex-col">
+                    <div className="flex items-center">
+                        <span className="w-80">{getSecret()}</span>
+                        <Image className="m-3" src={hideSecret ? "/enableVisible.svg" : "/disableVisible.svg"}
+                               alt="visibility toggle" width={24} height={24}
+                               onClick={() => setHideSecret(!hideSecret)}/>
                     </div>
-                    <button className="w-1/4" onClick={rotateSecret}>Rotate</button>
+                    <div className="flex items-center">
+                        <span className="w-80">Issued At : {issuedAt}</span>
+                        <Image className="m-3" src="/renew.svg"
+                               alt="renew secret" width={24} height={24}
+                               onClick={rotateSecret}/>
+                    </div>
                 </div>
-                <p>Issued At : {issuedAt}</p>
             </div>
         </div>
     );

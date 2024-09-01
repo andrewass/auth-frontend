@@ -15,7 +15,7 @@ const applicationTypes = {
     M2M: "Machine to Machine Application"
 }
 
-export default function ClientRegistrationStep1() {
+export default function ClientFormStep1() {
     const {step1FormData, updateStep1FormData} = useClientDataContext();
 
     function updateForm(

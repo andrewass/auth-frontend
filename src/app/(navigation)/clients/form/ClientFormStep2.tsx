@@ -24,7 +24,7 @@ export const grantTypes = {
     IMPLICIT: "Implicit"
 }
 
-const ClientRegistrationStep2 = () => {
+const ClientFormStep2 = () => {
     const {step2FormData, updateStep2FormData} = useClientDataContext();
 
     function updateFormOnEvent(
@@ -68,4 +68,4 @@ const ClientRegistrationStep2 = () => {
     );
 }
 
-export default ClientRegistrationStep2;
+export default ClientFormStep2;

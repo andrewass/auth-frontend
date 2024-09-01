@@ -3,7 +3,7 @@
 import {getServerSessionData} from "@/app/session/sessionData";
 import {toSimpleClient} from "@/app/(navigation)/clients/types";
 import {redirect} from "next/navigation";
-import {Step1FormData, Step2FormData} from "@/app/(navigation)/clients/registration/ClientFormData";
+import {Step1FormData, Step2FormData} from "@/app/(navigation)/clients/form/ClientFormData";
 
 export async function registerClient(
     step1FormData: Step1FormData,

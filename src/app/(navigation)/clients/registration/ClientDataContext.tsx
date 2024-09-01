@@ -1,9 +1,9 @@
 "use client";
 
 import {createContext, ReactNode, useContext, useState} from "react";
-import {Step1FormData, Step2FormData} from "@/app/(navigation)/clients/registration/ClientFormData";
+import {Step1FormData, Step2FormData} from "@/app/(navigation)/clients/form/ClientFormData";
 import {registerClient} from "@/app/(navigation)/clients/registration/actions";
-import {grantTypes} from "@/app/(navigation)/clients/registration/ClientRegistrationStep2";
+import {grantTypes} from "@/app/(navigation)/clients/form/ClientFormStep2";
 import {CheckboxItem} from "@/app/components/CheckboxGroup";
 
 interface ClientDataContextType {
