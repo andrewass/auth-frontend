@@ -1,8 +1,9 @@
-import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 
+interface Props {
+    currentStep: number
+}
 
-const ClientFormStepDisplay = () => {
-    const {currentStep} = useClientDataContext();
+export default function ClientFormStepDisplay({currentStep}: Props) {
 
     return (
         <ul className="steps w-full">
@@ -12,5 +13,3 @@ const ClientFormStepDisplay = () => {
         </ul>
     );
 }
-
-export default ClientFormStepDisplay;

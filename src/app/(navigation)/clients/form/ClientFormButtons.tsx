@@ -1,14 +1,21 @@
-import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
+interface Props {
+    navigatePrevious: () => void
+    navigateNext: () => void
+    currentStep: number
+    submitClientFormData: () => void
+}
 
-const ButtonGroup = () => {
-    const {
-        isFinalStep, navigateNext, currentStep,
-        navigatePrevious, submitClientFormData
-    } = useClientDataContext();
+export default function ClientFormButtons(
+    {
+        navigatePrevious, submitClientFormData,
+        navigateNext, currentStep
+    }: Props
+) {
+    const isFinalStep = currentStep === 3
 
     return (
         <div className="flex justify-between">
-            {currentStep > 0 &&
+            {currentStep > 1 &&
                 <div>
                     <button className="btn btn-primary" onClick={navigatePrevious}>
                         Previous
@@ -25,5 +32,3 @@ const ButtonGroup = () => {
         </div>
     );
 }
-
-export default ButtonGroup;

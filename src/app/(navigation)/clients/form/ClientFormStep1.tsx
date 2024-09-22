@@ -1,5 +1,5 @@
-import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 import {ChangeEvent} from "react";
+import ClientStep1FormData from "@/app/(navigation)/clients/form/ClientStep1FormData";
 
 enum Field {
     TYPE,
@@ -15,8 +15,12 @@ const applicationTypes = {
     M2M: "Machine to Machine Application"
 }
 
-export default function ClientFormStep1() {
-    const {step1FormData, updateStep1FormData} = useClientDataContext();
+interface Props {
+    formData: ClientStep1FormData,
+    updateFormData: (data: ClientStep1FormData) => void
+}
+
+export default function ClientFormStep1({formData, updateFormData}: Props) {
 
     function updateForm(
         field: Field,
@@ -26,23 +30,23 @@ export default function ClientFormStep1() {
     ) {
         switch (field) {
             case Field.TYPE:
-                updateStep1FormData({...step1FormData, clientType: event.target.value});
+                updateFormData({...formData, clientType: event.target.value});
                 break;
             case Field.NAME :
-                updateStep1FormData({...step1FormData, clientName: event.target.value});
+                updateFormData({...formData, clientName: event.target.value});
                 break;
             case Field.URL:
-                updateStep1FormData({...step1FormData, clientUrl: event.target.value})
+                updateFormData({...formData, clientUrl: event.target.value})
                 break;
             case Field.DESCRIPTION:
-                updateStep1FormData({...step1FormData, clientDescription: event.target.value});
+                updateFormData({...formData, clientDescription: event.target.value});
                 break;
         }
     }
 
     return (
         <div className="flex flex-col gap-8">
-            <select className="select select-bordered" value={step1FormData.clientType ?? "default"}
+            <select className="select select-bordered" value={formData.clientType ?? "default"}
                     onChange={(event) => updateForm(Field.TYPE, event)}
             >
                 <option value="default" disabled>
@@ -52,13 +56,13 @@ export default function ClientFormStep1() {
                     .map(([key, value]) => <option key={key} value={value}>{value}</option>)
                 }
             </select>
-            <input type="text" value={step1FormData?.clientName || ""}
+            <input type="text" value={formData?.clientName || ""}
                    onChange={(event) => updateForm(Field.NAME, event)}
                    placeholder="Application Name" className="input input-bordered"/>
-            <input type="text" value={step1FormData?.clientUrl || ""}
+            <input type="text" value={formData?.clientUrl || ""}
                    onChange={(event) => updateForm(Field.URL, event)}
                    placeholder="Homepage URL" className="input input-bordered"/>
-            <textarea className="textarea textarea-bordered" value={step1FormData?.clientDescription || ""}
+            <textarea className="textarea textarea-bordered" value={formData?.clientDescription || ""}
                       onChange={(event) => updateForm(Field.DESCRIPTION, event)}
                       placeholder="Description"/>
         </div>

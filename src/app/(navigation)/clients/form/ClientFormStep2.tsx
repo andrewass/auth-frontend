@@ -1,7 +1,7 @@
-import {useClientDataContext} from "@/app/(navigation)/clients/registration/ClientDataContext";
 import {ChangeEvent} from "react";
 import CheckboxGroup, {CheckboxItem} from "@/app/components/CheckboxGroup";
 import MultiValueInput from "@/app/components/MultiValueInput";
+import ClientStep2FormData from "@/app/(navigation)/clients/form/ClientStep2FormData";
 
 enum Field {
     AUTH_METHOD
@@ -24,8 +24,12 @@ export const grantTypes = {
     IMPLICIT: "Implicit"
 }
 
-const ClientFormStep2 = () => {
-    const {step2FormData, updateStep2FormData} = useClientDataContext();
+interface Props{
+    formData: ClientStep2FormData
+    updateFormData: (data: ClientStep2FormData) => void
+}
+
+const ClientFormStep2 = ({formData, updateFormData}: Props) => {
 
     function updateFormOnEvent(
         field: Field,
@@ -33,22 +37,22 @@ const ClientFormStep2 = () => {
     ) {
         switch (field) {
             case Field.AUTH_METHOD:
-                updateStep2FormData({...step2FormData, tokenEndpointAuthMethod: event.target.value});
+                updateFormData({...formData, tokenEndpointAuthMethod: event.target.value});
                 break;
         }
     }
 
     function updateRedirectUris(uriList: string[]) {
-        updateStep2FormData({...step2FormData, redirectUris: uriList});
+        updateFormData({...formData, redirectUris: uriList});
     }
 
     function updateGrantTypes(grants: CheckboxItem[]) {
-        updateStep2FormData({...step2FormData, grantTypes: grants})
+        updateFormData({...formData, grantTypes: grants})
     }
 
     return (
         <div className="flex flex-col gap-8">
-            <select className="select select-bordered" value={step2FormData.tokenEndpointAuthMethod ?? "default"}
+            <select className="select select-bordered" value={formData.tokenEndpointAuthMethod ?? "default"}
                     onChange={(event) => updateFormOnEvent(Field.AUTH_METHOD, event)}
             >
                 <option value="default" disabled>
@@ -58,10 +62,10 @@ const ClientFormStep2 = () => {
                     .map(([key, value]) => <option key={key} value={value}>{value}</option>)
                 }
             </select>
-            <CheckboxGroup updateCheckedBoxes={updateGrantTypes} items={step2FormData.grantTypes}/>
+            <CheckboxGroup updateCheckedBoxes={updateGrantTypes} items={formData.grantTypes}/>
             <MultiValueInput
                 placeholderValue={"Add Commma Separated Redirect URLs"}
-                items={step2FormData.redirectUris}
+                items={formData.redirectUris}
                 updateRedirectUris={updateRedirectUris}
             />
         </div>

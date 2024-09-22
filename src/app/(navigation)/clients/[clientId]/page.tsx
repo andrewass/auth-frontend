@@ -14,7 +14,7 @@ export default async function ClientDetailsPage({params}: { params: { clientId: 
     return (
         <div>
             <ClientPresentation client={client}/>
-            <Link href={"/clients/modification"} passHref>
+            <Link href={`/clients/${client.clientId}/modification`}>
                 <button className="btn">Edit</button>
             </Link>
         </div>
