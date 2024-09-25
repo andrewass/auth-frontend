@@ -1,5 +1,7 @@
 import {ChangeEvent} from "react";
 import ClientStep1FormData from "@/app/(navigation)/clients/form/ClientStep1FormData";
+import FloatingLabelInput from "@/app/components/FloatingLabelInput";
+import FloatingLabelTextArea from "@/app/components/FloatingLabelTextArea";
 
 enum Field {
     TYPE,
@@ -56,15 +58,15 @@ export default function ClientFormStep1({formData, updateFormData}: Props) {
                     .map(([key, value]) => <option key={key} value={value}>{value}</option>)
                 }
             </select>
-            <input type="text" value={formData?.clientName || ""}
-                   onChange={(event) => updateForm(Field.NAME, event)}
-                   placeholder="Application Name" className="input input-bordered"/>
-            <input type="text" value={formData?.clientUrl || ""}
-                   onChange={(event) => updateForm(Field.URL, event)}
-                   placeholder="Homepage URL" className="input input-bordered"/>
-            <textarea className="textarea textarea-bordered" value={formData?.clientDescription || ""}
-                      onChange={(event) => updateForm(Field.DESCRIPTION, event)}
-                      placeholder="Description"/>
+
+            <FloatingLabelInput placeholder="Application Name" value={formData?.clientName}
+                                onChange={(event) => updateForm(Field.NAME, event)}/>
+
+            <FloatingLabelInput placeholder="Homepage URL" value={formData?.clientUrl}
+                                onChange={(event) => updateForm(Field.URL, event)}/>
+
+            <FloatingLabelTextArea placeholder="Description" value={formData?.clientDescription}
+                                   onChange={(event) => updateForm(Field.DESCRIPTION, event)}/>
         </div>
     );
 }
