@@ -5,6 +5,7 @@ import Link from "next/link";
 
 export default async function ClientsPage() {
     const sessionData = await getServerSessionData();
+
     const params = new URLSearchParams({email: sessionData.email});
     const response = await fetch(process.env.AUTH_SERVER_URL + `/clients?${params}`, {
         cache: "no-store"
