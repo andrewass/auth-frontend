@@ -4,6 +4,6 @@ import type ClientStep1FormData from "@/app/(navigation)/clients/form/ClientStep
 import type ClientStep2FormData from "@/app/(navigation)/clients/form/ClientStep2FormData";
 
 export async function submitClient(
-	step1FormData: ClientStep1FormData,
-	step2FormData: ClientStep2FormData,
+	_step1FormData: ClientStep1FormData,
+	_step2FormData: ClientStep2FormData,
 ) {}

@@ -21,9 +21,9 @@ export interface ClientDetailed {
 
 export const toSimpleClient = (data: any): ClientSimple => {
 	return {
-		name: data["client_name"],
-		clientId: data["client_id"],
-		clientSecret: data["client_secret"],
+		name: data.client_name,
+		clientId: data.client_id,
+		clientSecret: data.client_secret,
 	};
 };
 
@@ -32,18 +32,18 @@ export async function toDetailedClient(
 ): Promise<ClientDetailed> {
 	const data = await response.json();
 	return {
-		applicationType: data["application_type"],
-		authMethod: data["auth_method"],
-		grantTypes: data["grant_types"],
-		email: data["user_email"],
-		redirectUris: data["redirect_uri"],
-		uri: data["client_uri"],
-		name: data["client_name"],
-		clientId: data["client_id"],
-		clientSecret: data["client_secret"],
-		clientIdIssuedAt: data["client_id_issued_at"],
-		clientSecretIssuedAt: data["client_secret_issued_at"],
-		description: data["client_description"],
+		applicationType: data.application_type,
+		authMethod: data.auth_method,
+		grantTypes: data.grant_types,
+		email: data.user_email,
+		redirectUris: data.redirect_uri,
+		uri: data.client_uri,
+		name: data.client_name,
+		clientId: data.client_id,
+		clientSecret: data.client_secret,
+		clientIdIssuedAt: data.client_id_issued_at,
+		clientSecretIssuedAt: data.client_secret_issued_at,
+		description: data.client_description,
 	};
 }
 

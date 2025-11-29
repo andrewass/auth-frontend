@@ -9,7 +9,7 @@ export default async function ClientModificationPage({
 	const { clientId } = params;
 	const urlParams = new URLSearchParams({ client_id: clientId });
 	const response = await fetch(
-		process.env.AUTH_SERVER_URL + `/clients/client?${urlParams}`,
+		`${process.env.AUTH_SERVER_URL}/clients/client?${urlParams}`,
 		{
 			cache: "no-store",
 		},

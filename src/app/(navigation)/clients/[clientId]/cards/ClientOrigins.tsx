@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function ClientOrigins({ originList }: Props) {
-	const [origins, setOrigins] = useState<string[]>(originList);
+	const [origins, _setOrigins] = useState<string[]>(originList);
 
 	return (
 		<div className="card">

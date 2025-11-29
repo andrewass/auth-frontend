@@ -8,7 +8,7 @@
 		"build": "next build",
 		"start": "next start",
 		"biome:check": "biome check",
-		"biome:fix": "biome check --write"
+		"biome:fix": "biome check --write --unsafe --max-diagnostics=none"
 	},
 	"dependencies": {
 		"date-fns": "^4.1.0",

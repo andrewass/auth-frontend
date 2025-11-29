@@ -8,7 +8,7 @@ const fetchAccessCode = async (email: string, params: AuthParameters) => {
 		"http://authserver.io/api/auth/callback/customauth";
 
 	const authResponse = await fetch(
-		process.env.AUTH_SERVER_URL + "/auth/response",
+		`${process.env.AUTH_SERVER_URL}/auth/response`,
 		{
 			method: "POST",
 			body: JSON.stringify({
@@ -24,9 +24,7 @@ const fetchAccessCode = async (email: string, params: AuthParameters) => {
 	const accessCode = data.code;
 	const state = data.state;
 	if (internalCallbackUrl.includes(params.redirectUri!)) {
-		redirect(
-			"/api/auth/callback/customauth?code=" + accessCode + "&state=" + state,
-		);
+		redirect(`/api/auth/callback/customauth?code=${accessCode}&state=${state}`);
 	} else {
 		const redirectUrl = new URL(params.redirectUri!);
 		redirectUrl.searchParams.append("code", accessCode);
@@ -36,7 +34,7 @@ const fetchAccessCode = async (email: string, params: AuthParameters) => {
 };
 
 export const signUpUser = async (formData: FormData) => {
-	await fetch(process.env.AUTH_SERVER_URL + "/user/sign-up", {
+	await fetch(`${process.env.AUTH_SERVER_URL}/user/sign-up`, {
 		method: "POST",
 		body: JSON.stringify({
 			email: formData.get("email"),
@@ -49,7 +47,7 @@ export const signInUser = async (
 	params: AuthParameters,
 	formData: FormData,
 ) => {
-	await fetch(process.env.AUTH_SERVER_URL + "/user/sign-in", {
+	await fetch(`${process.env.AUTH_SERVER_URL}/user/sign-in`, {
 		method: "POST",
 		body: JSON.stringify({
 			email: formData.get("email"),

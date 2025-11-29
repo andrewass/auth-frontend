@@ -10,7 +10,7 @@ export const rotateClientSecret = async (
 ): Promise<ClientDetailed> => {
 	const params = new URLSearchParams({ client_id: clientId });
 	const response = await fetch(
-		process.env.AUTH_SERVER_URL + `/clients/rotate-secret?${params}`,
+		`${process.env.AUTH_SERVER_URL}/clients/rotate-secret?${params}`,
 		{
 			cache: "no-store",
 			method: "POST",

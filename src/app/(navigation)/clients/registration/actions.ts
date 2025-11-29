@@ -14,7 +14,7 @@ export async function registerClient(
 ) {
 	const sessionData = await auth();
 	const response = await fetch(
-		process.env.AUTH_SERVER_URL + "/clients/create",
+		`${process.env.AUTH_SERVER_URL}/clients/create`,
 		{
 			method: "POST",
 			body: JSON.stringify({
@@ -22,7 +22,7 @@ export async function registerClient(
 				client_uri: step1FormData.clientUrl,
 				client_name: step1FormData.clientName,
 				client_description: step1FormData.clientDescription,
-				user_email: sessionData!.user!.email,
+				user_email: sessionData?.user?.email,
 				grant_types: step2FormData.grantTypes.map((type) => type.code),
 				application_type: step1FormData.clientType,
 				token_endpoint_auth_method: step2FormData.tokenEndpointAuthMethod,

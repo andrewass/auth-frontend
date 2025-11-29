@@ -8,7 +8,7 @@ export default async function ClientsPage() {
 
 	const params = new URLSearchParams({ email: sessionData.email });
 	const response = await fetch(
-		process.env.AUTH_SERVER_URL + `/clients?${params}`,
+		`${process.env.AUTH_SERVER_URL}/clients?${params}`,
 		{
 			cache: "no-store",
 		},

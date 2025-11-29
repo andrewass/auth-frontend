@@ -17,7 +17,7 @@ function ClientTable({ clients }: Props) {
 				</tr>
 			</thead>
 			<tbody>
-				{clients.map((client, index) => (
+				{clients.map((client, _index) => (
 					<ClientRow key={client.clientId} client={client} />
 				))}
 			</tbody>
