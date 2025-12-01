@@ -1,6 +1,3 @@
-import Link from "next/link";
-import ClientsTable from "@/app/(navigation)/clients/table/ClientsTable";
-import { toSimpleClients } from "@/app/(navigation)/clients/types";
 import { getServerSessionData } from "@/app/session/sessionData";
 
 export default async function ClientsPage() {
@@ -14,18 +11,6 @@ export default async function ClientsPage() {
 		},
 	);
 	const clients = await response.json();
-	const mappedClients = toSimpleClients(clients);
 
-	return (
-		<div className="flex flex-col gap-12">
-			<div>
-				<ClientsTable clients={mappedClients} />
-			</div>
-			<div>
-				<Link href={"/clients/registration"} passHref>
-					<button className="btn">Add Client</button>
-				</Link>
-			</div>
-		</div>
-	);
+	return <div>Clients Page</div>;
 }
