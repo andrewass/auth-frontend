@@ -1,4 +1,4 @@
-import ClientsListTab from "@/app/(navigation)/clients/clientslisttab/ClientsListTab";
+import ClientsListTab from "@/app/clients/clientslisttab/ClientsListTab";
 import { getServerSessionData } from "@/app/session/sessionData";
 
 export default async function ClientsPage() {

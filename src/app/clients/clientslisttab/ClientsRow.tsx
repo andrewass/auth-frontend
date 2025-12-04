@@ -1,4 +1,4 @@
-import type { ClientDetailed } from "@/app/(navigation)/clients/types";
+import type { ClientDetailed } from "@/app/clients/types";
 
 interface Props {
 	client: ClientDetailed;

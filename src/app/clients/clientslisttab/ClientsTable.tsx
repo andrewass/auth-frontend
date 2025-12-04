@@ -1,5 +1,5 @@
-import ClientsRow from "@/app/(navigation)/clients/clientslisttab/ClientsRow";
-import type { ClientDetailed } from "@/app/(navigation)/clients/types";
+import ClientsRow from "@/app/clients/clientslisttab/ClientsRow";
+import type { ClientDetailed } from "@/app/clients/types";
 
 interface Props {
 	clients: ClientDetailed[];
