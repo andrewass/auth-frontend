@@ -20,6 +20,7 @@ export default async function ClientsPage() {
 				name="my_tabs_2"
 				className="tab"
 				aria-label="Clients list"
+				defaultChecked
 			/>
 			<div className="tab-content border-base-300 bg-base-100 p-10">
 				<ClientsListTab />
@@ -30,7 +31,6 @@ export default async function ClientsPage() {
 				name="my_tabs_2"
 				className="tab"
 				aria-label="Initial access token"
-				defaultChecked
 			/>
 			<div className="tab-content border-base-300 bg-base-100 p-10">
 				Tab content 2

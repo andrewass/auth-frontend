@@ -1,3 +1,7 @@
+"use client";
+
+import { redirect } from "next/navigation";
+
 export default function ClientsToolBar() {
 	return (
 		<div className="flex flex-row gap-4">
@@ -19,7 +23,12 @@ export default function ClientsToolBar() {
 				<input type="search" className="grow" placeholder="Search client" />
 			</label>
 
-			<button className="btn btn-primary">Create client</button>
+			<button
+				className="btn btn-primary"
+				onClick={() => redirect("/clients/registration")}
+			>
+				Create client
+			</button>
 		</div>
 	);
 }
