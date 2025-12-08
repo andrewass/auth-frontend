@@ -2,15 +2,17 @@
 
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import CapabilityConfig from "@/app/clients/registration/CapabilityConfig";
 import GeneralSettings from "@/app/clients/registration/GeneralSettings";
 import LoginSettings from "@/app/clients/registration/LoginSettings";
+import RedirectEndpointSettings from "@/app/clients/registration/RedirectEndpointSettings";
+import useClientRegistrationForm from "@/app/clients/registration/useClientRegistrationForm";
 
 export default function ClientRegistrationPage() {
 	const [currentStep, setCurrentStep] = useState<number>(1);
+	const { formData, updateGeneralSettings } = useClientRegistrationForm();
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col h-200">
 			<div className="breadcrumbs p-10">
 				<ul>
 					<li>
@@ -22,8 +24,8 @@ export default function ClientRegistrationPage() {
 
 			<div className="divider divider-vertical m-0 h-0" />
 
-			<div className="flex flex-col gap-10 p-10">
-				<div className="flex flex-row gap-5 items-start">
+			<div className="flex flex-col flex-1 p-10">
+				<div className="flex flex-row gap-15 items-start flex-1 mb-15">
 					<ul className="steps steps-vertical text-sm gap-2">
 						<li className={`step ${currentStep >= 1 ? "step-primary" : ""}`}>
 							General Settings
@@ -37,8 +39,13 @@ export default function ClientRegistrationPage() {
 					</ul>
 
 					<div className="flex-1">
-						{currentStep === 1 && <GeneralSettings />}
-						{currentStep === 2 && <CapabilityConfig />}
+						{currentStep === 1 && (
+							<GeneralSettings
+								data={formData.generalSettings}
+								onChange={updateGeneralSettings}
+							/>
+						)}
+						{currentStep === 2 && <RedirectEndpointSettings />}
 						{currentStep === 3 && <LoginSettings />}
 					</div>
 				</div>
