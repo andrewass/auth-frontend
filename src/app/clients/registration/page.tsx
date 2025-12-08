@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 import GeneralSettings from "@/app/clients/registration/GeneralSettings";
 import LoginSettings from "@/app/clients/registration/LoginSettings";
-import RedirectEndpointSettings from "@/app/clients/registration/RedirectEndpointSettings";
+import RedirectAndEndpointSettings from "@/app/clients/registration/RedirectAndEndpointSettings";
 import useClientRegistrationForm from "@/app/clients/registration/useClientRegistrationForm";
 
 export default function ClientRegistrationPage() {
@@ -45,7 +45,7 @@ export default function ClientRegistrationPage() {
 								onChange={updateGeneralSettings}
 							/>
 						)}
-						{currentStep === 2 && <RedirectEndpointSettings />}
+						{currentStep === 2 && <RedirectAndEndpointSettings />}
 						{currentStep === 3 && <LoginSettings />}
 					</div>
 				</div>
