@@ -7,6 +7,7 @@ export default function NavigationHeader() {
 				<p>Auth Frontend</p>
 				<button
 					className="btn"
+					type="button"
 					onClick={async () => {
 						"use server";
 						await signOut();

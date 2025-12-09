@@ -53,19 +53,25 @@ export default function ClientRegistrationPage() {
 				<div className="flex flex-row gap-14">
 					<div className="flex flex-row gap-4">
 						<button
+							type="button"
 							className="btn"
 							onClick={() => setCurrentStep(Math.max(currentStep - 1, 1))}
 						>
 							Previous
 						</button>
 						<button
+							type="button"
 							className="btn"
 							onClick={() => setCurrentStep(Math.min(currentStep + 1, 3))}
 						>
 							Next
 						</button>
 					</div>
-					<button className="btn" onClick={() => redirect("/clients")}>
+					<button
+						type="button"
+						className="btn"
+						onClick={() => redirect("/clients")}
+					>
 						Cancel
 					</button>
 				</div>

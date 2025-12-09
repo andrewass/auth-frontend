@@ -13,7 +13,9 @@ export default function ClientsRow({ client }: Props) {
 			<td>{client.description}</td>
 			<td>{client.uri}</td>
 			<td>
-				<button className="btn btn-sm btn-ghost">Edit</button>
+				<button type="button" className="btn btn-sm btn-ghost">
+					Edit
+				</button>
 			</td>
 		</tr>
 	);

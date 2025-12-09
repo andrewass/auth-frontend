@@ -14,6 +14,7 @@ export default function ClientsToolBar() {
 					stroke="currentColor"
 					className="size-5"
 				>
+					<title>Search client</title>
 					<path
 						strokeLinecap="round"
 						strokeLinejoin="round"
@@ -24,6 +25,7 @@ export default function ClientsToolBar() {
 			</label>
 
 			<button
+				type="button"
 				className="btn btn-primary"
 				onClick={() => redirect("/clients/registration")}
 			>
