@@ -7,7 +7,7 @@ export interface GeneralSettingsData {
 	logoUrl: string;
 }
 
-export interface RedirectEndpointSettingsData {
+export interface RedirectAndEndpointSettingsData {
 	redirectUris: string[];
 	postLogoutRedirectUris: string[];
 	tokenEndpointAuthMethod: string;
@@ -24,7 +24,7 @@ export interface PermissionsAndSecuritySettingsData {
 
 export interface ClientRegistrationFormData {
 	generalSettings: GeneralSettingsData;
-	redirectEndpointSettings: RedirectEndpointSettingsData;
+	redirectAndEndpointSettings: RedirectAndEndpointSettingsData;
 	permissionsAndSecuritySettings: PermissionsAndSecuritySettingsData;
 }
 
@@ -57,12 +57,13 @@ const DEFAULT_ACCESS_TOKEN_SETTINGS: AccessTokenSettingsData = {
 	signingAlgorithm: "RS256",
 };
 
-const DEFAULT_REDIRECT_ENDPOINT_SETTINGS: RedirectEndpointSettingsData = {
-	redirectUris: [],
-	postLogoutRedirectUris: [],
-	tokenEndpointAuthMethod: "client_secret_basic",
-	allowedGrantTypes: [],
-};
+const DEFAULT_REDIRECT_AND_ENDPOINT_SETTINGS: RedirectAndEndpointSettingsData =
+	{
+		redirectUris: [],
+		postLogoutRedirectUris: [],
+		tokenEndpointAuthMethod: "client_secret_basic",
+		allowedGrantTypes: [],
+	};
 
 const DEFAULT_PERMISSIONS_AND_SECURITY_SETTINGS: PermissionsAndSecuritySettingsData =
 	{
@@ -75,7 +76,7 @@ const DEFAULT_PERMISSIONS_AND_SECURITY_SETTINGS: PermissionsAndSecuritySettingsD
 
 const DEFAULT_FORM_DATA: ClientRegistrationFormData = {
 	generalSettings: DEFAULT_GENERAL_SETTINGS,
-	redirectEndpointSettings: DEFAULT_REDIRECT_ENDPOINT_SETTINGS,
+	redirectAndEndpointSettings: DEFAULT_REDIRECT_AND_ENDPOINT_SETTINGS,
 	permissionsAndSecuritySettings: DEFAULT_PERMISSIONS_AND_SECURITY_SETTINGS,
 };
 
@@ -90,12 +91,15 @@ export default function useClientRegistrationForm() {
 		}));
 	}
 
-	function updateRedirectEndpointSettings(
-		data: Partial<RedirectEndpointSettingsData>,
+	function updateRedirectAndEndpointSettings(
+		data: Partial<RedirectAndEndpointSettingsData>,
 	) {
 		setFormData((prev) => ({
 			...prev,
-			redirectEndpointSettings: { ...prev.redirectEndpointSettings, ...data },
+			redirectAndEndpointSettings: {
+				...prev.redirectAndEndpointSettings,
+				...data,
+			},
 		}));
 	}
 
@@ -118,7 +122,7 @@ export default function useClientRegistrationForm() {
 	return {
 		formData,
 		updateGeneralSettings,
-		updateRedirectEndpointSettings,
+		updateRedirectEndpointSettings: updateRedirectAndEndpointSettings,
 		updatePermissionsAndSecuritySettings,
 		resetForm,
 	};

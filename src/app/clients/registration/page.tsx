@@ -9,7 +9,8 @@ import useClientRegistrationForm from "@/app/clients/registration/useClientRegis
 
 export default function ClientRegistrationPage() {
 	const [currentStep, setCurrentStep] = useState<number>(1);
-	const { formData, updateGeneralSettings } = useClientRegistrationForm();
+	const { formData, updateGeneralSettings, updateRedirectEndpointSettings } =
+		useClientRegistrationForm();
 
 	return (
 		<div className="flex flex-col h-200">
@@ -45,7 +46,12 @@ export default function ClientRegistrationPage() {
 								onChange={updateGeneralSettings}
 							/>
 						)}
-						{currentStep === 2 && <RedirectAndEndpointSettings />}
+						{currentStep === 2 && (
+							<RedirectAndEndpointSettings
+								data={formData.redirectAndEndpointSettings}
+								onChange={updateRedirectEndpointSettings}
+							/>
+						)}
 						{currentStep === 3 && <LoginSettings />}
 					</div>
 				</div>
