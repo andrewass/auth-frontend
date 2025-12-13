@@ -1,4 +1,3 @@
-import type React from "react";
 import { useState } from "react";
 
 interface Props {
@@ -59,13 +58,13 @@ export default function MultiValueInput({
 			<input
 				type="text"
 				placeholder={placeholderValue}
-				className="input input-bordered"
+				className={`input input-bordered ${error ? "input-error" : ""}`}
 				value={inputValue}
 				onChange={onInputChange}
 			/>
 
 			{error && (
-				<label htmlFor="multiValueInputError" className="label">
+				<label htmlFor="multiValueInputError" className="label ml-3">
 					<span className="label-text-alt text-error">{error}</span>
 				</label>
 			)}
