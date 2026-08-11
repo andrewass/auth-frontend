@@ -28,6 +28,6 @@
 		"autoprefixer": "^10.5.4",
 		"daisyui": "^5.7.16",
 		"tailwindcss": "^4.3.3",
-		"typescript": "^5.9.3"
+		"typescript": "^7.0.2"
 	}
 }
